@@ -1,3 +1,76 @@
-<p>
-  edit-profile works!
-</p>
+<div class="dialog">
+  <h1 mat-dialog-title>{{ 'app.edit'|translate|titlecase}} {{ 'app.profile'|translate|lowercase}}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="editProfileForm" (ngSubmit)="save()" id="editProfileForm" class="column">
+      <p class="error" *ngIf="error && error.non_field_errors">
+        {{ error.non_field_errors }}
+      </p>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.email">
+          {{ error.email }}
+        </p>
+        <mat-label>
+          {{ 'user.email'|translate|titlecase }}
+        </mat-label>
+        <input matInput type="email" formControlName="email" required>
+        <mat-error *ngIf="editProfileForm.controls['email'].invalid">
+          {{ 'error.' + getError("email")|translate:getParam("email")|titlecase }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.first_name">
+          {{ error.first_name }}
+        </p>
+        <mat-label>
+          {{ 'user.first_name'|translate|titlecase}}
+        </mat-label>
+        <input matInput formControlName="first_name">
+        <mat-error *ngIf="editProfileForm.controls['first_name'].invalid">
+          {{ 'error.' + getError("first_name")|translate:getParam("first_name")|titlecase }}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.last_name">
+          {{ error.last_name }}
+        </p>
+        <mat-label>
+          {{ 'user.last_name'|translate|titlecase }}
+        </mat-label>
+        <input matInput formControlName="last_name">
+        <mat-error *ngIf="editProfileForm.controls['last_name'].invalid">
+          {{ 'error.' + getError("last_name")|translate:getParam("last_name")|titlecase }}
+        </mat-error>
+      </mat-form-field>
+       <mat-form-field>
+        <p class="error" *ngIf="error && error.gender">
+          {{ error.gender }}
+        </p>
+        <mat-select placeholder="{{ 'user.gender'|translate|titlecase }}" formControlName="gender" required>
+          <mat-option *ngFor="let gender of genders" [value]="gender">
+            {{ 'user.' + gender|translate|titlecase }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="editProfileForm.controls['gender'].invalid">
+          {{ 'ERROR.' + getError("gender")|translate|titlecase}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.age">
+          {{ error.age }}
+        </p>
+        <mat-label>
+          {{ 'user.age'|translate|titlecase}}
+        </mat-label>
+        <input matInput type="number" formControlName="age" required>
+        <mat-error *ngIf="editProfileForm.controls['age'].invalid">
+          {{ 'error.' + getError("age")|translate:getParam("age")|titlecase}}
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="primary" type="submit" form="editProfileForm">
+      {{ 'action.save'|translate|titlecase}}
+    </button>
+  </div>
+</div>
