@@ -1,3 +1,79 @@
-<p>
-  schedule works!
-</p>
+<div class="dialog">
+  <h1 mat-dialog-title>{{ 'app.' + title|translate|titlecase }} {{ 'app.schedule'|translate|lowercase }}</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="scheduleForm" (ngSubmit)="save()" id="scheduleForm" class="column">
+      <p class="error" *ngIf="error && error.non_field_errors">
+        {{ error.non_field_errors }}
+      </p>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.reason">
+          {{ error.reason }}
+        </p>
+        <textarea matInput placeholder="{{ 'object.reason'|translate|titlecase }}" formControlName="reason"></textarea>
+        <mat-error *ngIf="scheduleForm.controls['reason'].invalid">
+          {{ 'error.' + getError("reason")|translate|titlecase}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.description">
+          {{ error.description }}
+        </p>
+        <textarea matInput placeholder="{{ 'object.description'|translate|titlecase }}"
+                  formControlName="description" required></textarea>
+        <mat-error *ngIf="scheduleForm.controls['description'].invalid">
+          {{ 'error.' + getError("description")|translate|titlecase}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.expiration_date">
+          {{ error.expiration_date }}
+        </p>
+        <input matInput [matDatepicker]="expiration_date_picker" formControlName="expiration_date"
+               placeholder="{{ 'object.expiration_date'|translate|titlecase }}" required>
+        <mat-datepicker-toggle matSuffix [for]="expiration_date_picker"></mat-datepicker-toggle>
+        <mat-datepicker #expiration_date_picker></mat-datepicker>
+        <mat-error *ngIf="scheduleForm.controls['expiration_date'].invalid">
+          {{ 'error.' + getError("expiration_date")|translate|titlecase}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.time">
+          {{ error.time }}
+        </p>
+        <input matInput formControlName="time" [ngxTimepicker]="time_picker" [format]="24"
+               placeholder="{{ 'object.time'|translate|titlecase }}" required>
+        <ngx-material-timepicker #time_picker></ngx-material-timepicker>
+        <mat-error *ngIf="scheduleForm.controls['time'].invalid">
+          {{ 'error.' + getError("time")|translate|titlecase}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <p class="error" *ngIf="error && error.days">
+          {{ error.days }}
+        </p>
+        <mat-select  placeholder="{{ 'object.days'|translate|titlecase }}" formControlName="days" multiple required>
+          <mat-option *ngFor="let day of days" [value]="day">{{ 'object.' + day|translate|titlecase }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="scheduleForm.controls['days'].invalid">
+          {{ 'error.' + getError("days")|translate|titlecase}}
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <p class="error" *ngIf="error && error.active">
+          {{ error.active }}
+        </p>
+        <mat-checkbox formControlName="active" color="primary">
+          {{ 'object.active'|translate|titlecase}}
+        </mat-checkbox>
+        <mat-error *ngIf="scheduleForm.controls['active'].invalid">
+          {{ 'error.' + getError("active")|translate|titlecase}}
+        </mat-error>
+      </div>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-flat-button color="primary" type="submit" form="scheduleForm">
+      {{ 'action.save'|translate|titlecase}}
+    </button>
+  </div>
+</div>
