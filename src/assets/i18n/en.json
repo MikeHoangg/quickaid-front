@@ -1,0 +1,74 @@
+{
+  "app": {
+    "login": "login",
+    "registration": "registration",
+    "profile": "profile",
+    "add": "add",
+    "edit": "edit"
+  },
+  "object": {
+    "statistics": "statistics",
+    "diagnoses": "diagnoses",
+    "schedules": "schedules",
+    "reason": "reason",
+    "description": "description",
+    "expiration_date": "expiration date",
+    "time": "time",
+    "days": "days",
+    "active": "active",
+    "mon": "monday",
+    "tue": "tuesday",
+    "wed": "wednesday",
+    "thu": "thursday",
+    "fri": "friday",
+    "sat": "saturday",
+    "sun": "sunday",
+    "evr": "everyday"
+  },
+  "user": {
+    "email": "email",
+    "password": "password",
+    "confirm_password": "confirm password",
+    "first_name": "first name",
+    "last_name": "last name",
+    "age": "age",
+    "gender": "gender",
+    "male": "male",
+    "female": "female"
+  },
+  "action": {
+    "register": "register",
+    "login": "login",
+    "logout": "logout",
+    "save": "save",
+    "filter": "filter",
+    "edit": "edit",
+    "create": "create"
+  },
+  "error": {
+    "min": "ensure this value is greater than or equal to {{value}}",
+    "required": "this field is required"
+  },
+  "columns": {
+    "reason": "reason",
+    "description": "description",
+    "expiration_date": "expiration date",
+    "time": "time",
+    "days": "days",
+    "active": "active",
+    "actions": "actions",
+    "verdict": "verdict",
+    "start_time": "start time",
+    "end_time": "end time",
+    "min_blood_pressure": "lower threshold of blood pressure (mm Hg)",
+    "max_blood_pressure": "upper threshold of blood pressure (mm Hg)",
+    "glucose_rate": "glucose rate (mmol/l)",
+    "protein_rate": "protein rate (g/l)",
+    "albumin_rate": "albumin rate (g/l)",
+    "myoglobin_rate": "myoglobin rate (mcg/l)",
+    "cholesterol_rate": "cholesterol rate (mmol/l)",
+    "temperature": "temperature (°C)",
+    "created": "created on",
+    "ferritin_rate": "ferritin rate (mcg/l)"
+  }
+}
