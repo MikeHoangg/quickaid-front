@@ -1,0 +1,21 @@
+@import "../app.component.css";
+
+.tables-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 60vw;
+}
+
+.profile-card {
+  margin-right: 2rem;
+  align-self: flex-start;
+  min-width: 15vw;
+}
+
+table {
+  width: 100%
+}
+
+.mat-header-cell, .mat-cell {
+  text-align: center;
+}
