@@ -1,3 +1,46 @@
-<p>
-  login works!
-</p>
+<div class="content">
+  <mat-card class="authorization-card">
+    <mat-card-header>
+      <mat-card-title>
+        {{ 'app.login'|translate|titlecase }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="login()" id="loginForm" class="column">
+        <p class="error" *ngIf="error && error.non_field_errors">
+          {{ error.non_field_errors }}
+        </p>
+        <mat-form-field>
+          <p class="error" *ngIf="error && error.email">
+            {{ error.email }}
+          </p>
+          <mat-label>
+            {{ 'user.email'|translate|titlecase }}
+          </mat-label>
+          <input matInput formControlName="email" required>
+          <mat-error *ngIf="loginForm.controls['email'].invalid">
+            {{ 'error.' + getError("email")|translate|titlecase }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <p class="error" *ngIf="error && error.password">
+            {{ error.password }}
+          </p>
+          <mat-label>
+            {{ 'user.password'|translate|titlecase }}
+          </mat-label>
+          <input matInput type='password' formControlName="password" required>
+          <mat-error *ngIf="loginForm.controls['password'].invalid">
+            {{ 'error.' + getError("password")|translate  }}
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" type="submit" form="loginForm">
+        {{ 'action.login'|translate|uppercase }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
